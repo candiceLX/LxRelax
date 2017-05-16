@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <!-- 清理样式 -->
+        <link rel="stylesheet" href="css/clear.css">
+        <!-- 鼠标滚轮 -->
+        <script src="js/jquery-1.11.1.min.js"></script>
+        <script src="js/jquery.mousewheel.js"></script>
+        <style>
+        body{overflow: hidden; width: 100%; height: 100%; text-align: center; color: #000;}
+        /* gps角标 */
+        	.gps{position: fixed; right:20px; top: 50%; margin-top: -50px; z-index:2;}
+        	.gps li{ cursor:pointer; width:10px; height:10px; background:#ccc; border-radius:50%; margin-bottom:10px;}
+			.gps .current{ width:20px; height:20px; margin-left:-5px;}
+		/* bodyBox最大的容器 */
+        	.bodyBox{width: 100%; height: 100%; position: absolute; left: 0; top: 0; z-index: 1; }
+        	.bodyBox div{width: 100%; height: 100%; overflow: hidden; position: relative;}
+        	.bodyBox div span{width: 700px; height: 200px; background:#fff; display:block;margin: 50px; font-size: 18px; text-align: center; line-height:200px; animation: sport 6s linear infinite alternate;-webkit-animation: sport 6s linear infinite alternate;
+        		-moz-animation: sport 6s linear infinite alternate;
+        		-ms-animation: sport 6s linear infinite alternate;
+        	    -o-animation: sport 6s linear infinite alternate;}
+				@-webkit-keyframes sport{
+					0%{ transform:rotate(0)}
+					100%{ transform:rotate(360deg)}
+				}
+				@-moz-keyframes sport{
+					0%{ transform:rotate(0)}
+					100%{ transform:rotate(360deg)}
+				}
+				@-ms-keyframes sport{
+					0%{ transform:rotate(0)}
+					100%{ transform:rotate(360deg)}
+				}
+				@-o-keyframes sport{
+					0%{ transform:rotate(0)}
+					100%{ transform:rotate(360deg)}
+				}
+				@keyframes sport{
+					0%{ transform:rotate(0)}
+					100%{ transform:rotate(360deg)}
+				}
+				.bodyBox div h3{width:300px; height: 300px; background: #fff; text-align: center; position: absolute; left:50%; top: 400px;  transition:all 2s;}
+				.bodyBox div .rotate{width:200px; height:100px; background: #fff; transition:all 2s; margin: 0 auto; }
+				.bodyBox div .scale{width:200px; height:100px; background: #fff; transition:all 2s; margin: 0 auto; margin-top: 100px; text-align: center;}
+				.bodyBox div .skew{width:200px; height:100px; background: #fff; transition:all 2s; margin: 0 auto; margin-top: 100px; text-align: center;}
+				.bodyBox div .translate{width:200px; height:100px; background: #fff; transition:all 2s; margin:0 auto; margin-top: 100px; text-align: center;}
+				.bodyBox div .height{width:200px; height:100px; background: #fff; transition:all 2s; margin: 0 auto; margin-top: 100px; text-align: center;}				
+
+				.bodyBox div.no h3{left:-100%;}
+				.bodyBox div.no .rotate{ transform:rotate(360deg);}
+				.bodyBox div.no .scale{transform: scale(0.5);}
+				.bodyBox div.no .skew{transform: skew(30deg)}
+				.bodyBox div.no .translate{ transform: translate(45px);}
+				.bodyBox div.no .height{height: 0;}
+        </style>
+    </head>
+    <body>
+	<ol class="gps">
+		<li class="current"></li>
+		<li class=""></li>
+		<li class=""></li>
+		<li></li>
+		<li></li>
+	</ol>
+    <div class="bodyBox">
+	    <div style="background:red;" class="bodyBox01 no">
+	    	<span>一直动,先通过 选择器@keyframes{}来创建一个动画；然后animation:；调出动画</span>
+	    	<h3>进页面在加载</h3>
+	    </div>
+	    <div style="background:orange;" class="bodyBox02 no">
+			<span style="width: 200px;"></span>
+			<div class="rotate">这次来一个旋转吧</div>
+			transform可以定义旋转放大缩小等等 要配合给transition:all 2s;一个过渡时间。
+	    </div>
+	    <div style="background:yellow;" class="bodyBox03 no">
+	    	<div class="scale">给一个缩放吧</div>
+	    	一个参数时：表示水平和垂直同时缩放该倍率<br>
+两个参数时：第一个参数指定水平方向的缩放倍率，第二个参数指定垂直方向的缩放倍率 transform: scale(0.5, 2);
+	    </div>
+	    <div style="background:green;" class="bodyBox04 no">
+            <div class="skew">给一个倾斜吧</div>
+            用法：transform: skew(30deg)  或者 transform: skew(30deg, 30deg);<br>
+            一个参数时：表示水平方向的倾斜角度；
+两个参数时：<br>第一个参数表示水平方向的倾斜角度，第二个参数表示垂直方向的倾斜角度。
+	    </div>
+	    <div style="background:cyan;" class="bodyBox05 no">
+	        <div class="translate">给一个移动吧</div>
+	        用法：transform: translate(45px)  或者 transform: skew(45px, 150px);<br>
+	        一个参数时：表示水平方向的移动距离；
+两个参数时：<br>第一个参数表示水平方向的移动距离，第二个参数表示垂直方向的移动距离。
+	    	<div class="height">给一个0高度吧</div>
+	    </div>
+    </div>
+    </body>
+    <script>
+    $(function(){
+	    var num=0;
+		var timer=null;
+		//先给第一屏去掉no样式
+		$('.bodyBox01').removeClass('no');
+		
+		$(document).mousewheel(function(e,d){	
+			clearTimeout(timer);	
+			timer=setTimeout(function(){
+				num-=d;
+				console.log(d)
+				if( num>4 ){ num=4 }
+				if( num<0 ){ num=0 }
+				$('.bodyBox').stop().animate({ top:-num*100+'%' },500);	
+				$('.gps li').eq(num).addClass('current').siblings().removeClass('current')
+				//给当前屏去掉no样式
+				$('.bodyBox>div').eq(num).removeClass('no').siblings().addClass('no');				
+				},300);			
+			
+		});
+    });
+
+
+
+    </script>
+</html>

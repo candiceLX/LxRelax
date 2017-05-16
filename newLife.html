@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <!-- iPhone的浏览器中页面将以原始大小显示不允许缩放 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
+		<!-- 可将telephone=no,iPhone号码不被显示为拨号链接 -->
+		<meta name="format-detection" content="telephone=no"/>  
+        <!-- 他的作者 -->
+		<meta name="author" content="Csdn" />
+		<!-- 他的版权 -->
+		<meta name="Copyright" content="Csdn" />
+		<!-- 对网站的简单描述 -->
+		<meta name="description" content="" />
+		<!-- 本网站的关键字 -->
+		<meta content="" name="keywords" />
+        <!-- 使用最高版本ie渲染 -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <!-- 打开网页强制急速为模式 -->
+        <meta name="renderer" content="webkit|ie-comp|ie-stand">
+        <!-- 避免IE使用兼容模式 -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">	
+		<!-- 清理样式 -->
+		<link rel="stylesheet" href="css/clear.css">
+		<!-- JQ -->
+		<script src="js/jquery-1.11.1.min.js"></script>
+		<!-- rem -->
+		<script src="js/rem.js"></script>
+		<style>
+		body{overflow-x: hidden;}
+			h3{ font-size: 20px; color:#fff; line-height: 50px; width: 100%; height: 50px; background: #666;margin: 10px 0; text-align: center; }
+			.LXbut{width: auto; padding:10px; background:skyblue; color: #fff; border-radius: 5px; display:block; margin: 0 auto; text-align: center;}
+			a:hover{ color:#fff;}
+		</style>
+    </head>
+    <body>
+
+   <!--------------------------  轮播 ------------------------>
+   		<script src="js/TouchSlide.1.1.js"></script>
+        <style>
+        	/*banner*/
+			.banner{ background-color: #fff; position:relative; max-width: 640px; margin: 0 auto; /*限制 width:900px; height: auto; margin: 0 auto; */}
+			.banner .bd{ position:relative; z-index:0; }
+			.banner .bd li{ position:relative; text-align:center; }
+			.banner .bd li img{ width:100%;}
+			.banner .bd li a{ -webkit-tap-highlight-color:rgba(0,0,0,0); display:block;}
+			.banner .hd{ position:absolute; bottom:0.2rem; z-index:1; position:absolute; left:50%; transform:translateX(-50%);-webkit-transform:translateX(-50%); -moz-transform:translateX(-50%);-ms-transform:translateX(-50%);-o-transform:translateX(-50%);}
+			.banner .hd li{ display:inline-block; width:0.2rem; height:0.2rem; -webkit-border-radius:50%; -moz-border-radius:50%; -ms-border-radius:50%; border-radius:50%; background-color:#fff; text-indent:-99999px; overflow:hidden; margin:0 0.1rem; }
+			.banner .hd li.on{ background-color: #39b781;}	
+			.banner .bnt{ position:absolute; left: 3%; top: 50%; margin-top: -25px; display: block; width: 32px; height: 40px; background: #000;}	
+			.banner .next{left: auto; right: 3%; background: #000;}	
+        </style>
+        <h3>移动端banner轮播</h3>
+		<div id="slideBox" class="banner">
+		        <div class="bd">
+		            <ul>
+                      <li>
+                        <a>
+                        	<img src="images/banner011.png" alt="banner">
+                        </a>
+                      </li>
+                      <li>
+                        <a>
+                        	<img src="images/banner02.png" alt="banner">
+                        </a>
+                      </li>
+                      <li>
+                        <a>
+                        	<img src="images/banner03.png" alt="banner">
+                        </a>
+                      </li>                      		
+                    </ul>
+		        </div>
+		        <div class="hd hor_center">
+		            <ul></ul>
+		        </div>
+		        <a class="prev bnt" href="javascript:void(0)"></a>
+		        <a class="next bnt" href="javascript:void(0)"></a>
+		</div>
+		<script>
+				TouchSlide({
+		        slideCell: "#slideBox",
+		        titCell: ".hd ul",
+		        mainCell: ".bd ul",
+		        effect: "leftLoop",
+		        delayTime: 400,
+		        interTime: 5000,
+		        autoPage: true,
+		        autoPlay: true
+		         });			
+		</script>
+
+		<style>
+			.LXconmore{ width:100%; height:150px; background: #fff; margin-top: 22px;}
+			.LXconmore .bgb{ width: 12px; height: 27px; float: left; background:url(images/jiantou.png) no-repeat; cursor: pointer;}
+			.LXconmore .prev{ margin:40px 15px 0 32px;}
+			.LXconmore .next{margin:40px 32px 0 15px; background-position: top right;}
+			.LXconmore ul{ width: auto; height: 132px;}
+			.LXconmore ul li{display: inline-block;margin: 0 15px;}
+			.LXconmore ul li img{width: 186px; height: 96px;}
+			.LXconmore ul li p{ margin-top:17px; text-align: center; color: #666; font-size: 14px; width:13em;word-break:keep-all;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+		</style>
+		<script type="text/javascript" src="../../jquery.SuperSlide.2.1.1.js"></script>
+		<style>
+			.txtMarquee-top{width:300px; margin:20px;}
+			.txtMarquee-top .hd {
+			    overflow: hidden;
+			    height: 30px;
+			    background: #f4f4f4;
+			    padding: 0 10px;
+			}
+			.txtMarquee-top .hd .prev, .txtMarquee-top .hd .next {
+			    display: block;
+			    width: 9px;
+			    height: 5px;
+			    float: right;
+			    margin-right: 5px;
+			    margin-top: 10px;
+			    overflow: hidden;
+			    cursor: pointer;
+			    background: url("images/arrow.png") 0 -100px no-repeat;
+			}
+			.txtMarquee-top .hd .next {
+			    background-position: 0 -140px;
+			}
+		</style>
+		<h3>新闻轮播</h3>
+		<div class="txtMarquee-top" style="margin-top: 50px;">
+			<div class="hd">
+				<a class="next"></a>
+				<a class="prev"></a>
+			</div>
+			<div class="bd">
+				<div class="tempWrap" style="overflow:hidden; position:relative; height:120px">
+					<ul class="infoList" style="height: 312px; position: relative; padding: 0px; margin: 0px; top: -119px;">
+						<li class="clone" style="height: 24px;">
+							<span class="date">2011-11-11</span>
+							<a>那些无法理解的荒唐事</a>
+						</li>
+						<li style="height: 24px;">
+							<span class="date">2011-11-11</span>
+							<a>中国打破了世界软件巨头规则</a>
+						</li>
+						<li style="height: 24px;">
+							<span class="date">2011-11-11</span>
+							<a>口语：会说中文就能说英语！</a>
+						</li>
+						<li style="height: 24px;">
+							<span class="date">2011-11-11</span>
+							<a href="http://www.SuperSlide2.com" target="_blank">农场摘菜不如在线学外语好玩</a>
+						</li>
+						<li style="height: 24px;">
+							<span class="date">2011-11-11</span>
+							<a>数理化老师竟也看学习资料？</a>
+						</li>
+						<li style="height: 24px;">
+							<span class="date">2011-11-11</span>
+							<a>学英语送ipad2,45天突破听说</a>
+						</li>
+						<li style="height: 24px;">
+							<span class="date">2011-11-11</span>
+							<a >学外语，上北外！</a>
+						</li>
+						<li style="height: 24px;">
+							<span class="date">2011-11-11</span>
+							<a>那些无法理解的荒唐事</a>
+						</li>
+						<li class="clone" style="height: 24px;">
+							<span class="date">2011-11-11</span>
+							<a>中国打破了世界软件巨头规则</a>
+						</li>
+						<li class="clone" style="height: 24px;">
+							<span class="date">2011-11-11</span>
+							<a href="http://www.SuperSlide2.com" target="_blank">口语：会说中文就能说英语！</a>
+						</li>
+						<li class="clone" style="height: 24px;">
+							<span class="date">2011-11-11</span>
+							<a>农场摘菜不如在线学外语好玩</a>
+						</li>
+						<li class="clone" style="height: 24px;">
+							<span class="date">2011-11-11</span>
+							<a>数理化老师竟也看学习资料？</a>
+						</li>
+						<li class="clone" style="height: 24px;">
+							<span class="date">2011-11-11</span>
+							<a>学英语送ipad2,45天突破听说</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script src="js/jquery.SuperSlide.2.1.1.js"></script>
+		<script>
+			jQuery(".txtMarquee-top").slide({mainCell:".bd ul",autoPlay:true,effect:"topMarquee",vis:5,interTime:50,trigger:"click"});
+		</script>
+ 
+ 		<style>
+			.slideBox{ width:450px; height:230px; overflow:hidden; position:relative; border:1px solid #ddd; margin: 0 auto;}
+			.slideBox .hd{ height:15px; overflow:hidden; position:absolute; right:5px; bottom:5px; z-index:1; }
+			.slideBox .hd ul{ overflow:hidden; zoom:1; float:left;  }
+			.slideBox .hd ul li{ float:left; margin-right:2px;  width:15px; height:15px; line-height:14px; text-align:center; background:#fff; cursor:pointer; }
+			.slideBox .hd ul li.on{ background:#f00; color:#fff; }
+			.slideBox .bd{ position:relative; height:100%; z-index:0;   }
+			.slideBox .bd li{ zoom:1; vertical-align:middle; }
+			.slideBox .bd img{ width:450px; height:230px; display:block;  }
+
+			/* 下面是前/后按钮代码，如果不需要删除即可 */
+			.slideBox .prev,
+			.slideBox .next{ position:absolute; left:3%; top:50%; margin-top:-25px; display:block; width:32px; height:40px; background:url(images/slider-arrow.png) -110px 5px no-repeat; filter:alpha(opacity=50);opacity:0.5;   }
+			.slideBox .next{ left:auto; right:3%; background-position:8px 5px; }
+			.slideBox .prev:hover,
+			.slideBox .next:hover{ filter:alpha(opacity=100);opacity:1;  }
+			.slideBox .prevStop{ display:none;  }
+			.slideBox .nextStop{ display:none;  }	
+ 		</style>
+		<h3>pc banner轮播</h3>
+		<div id="slideBox" class="slideBox">
+			<div class="hd">
+				<ul>
+					<li class="on">1</li>
+					<li class="">2</li>
+					<li class="">3</li>
+				</ul>
+			</div>
+			<div class="bd">
+				<ul>
+					<li>
+						<a>
+							<img src="images/banner011.png">
+						</a>
+					</li>
+					<li>
+						<a>
+							<img src="images/indexContent3.png">
+						</a>
+					</li>
+					<li>
+						<a>
+							<img src="images/indexContent4.png">
+						</a>
+					</li>
+				</ul>
+			</div>
+			<!-- 下面是前/后按钮代码，如果不需要删除即可 -->
+			<a class="prev" href="javascript:void(0)"></a>
+			<a class="next" href="javascript:void(0)"></a>
+
+		</div>
+		<script>
+			jQuery(".slideBox").slide({mainCell:".bd ul",effect:"leftLoop",autoPlay:true})
+		</script>
+   		<h3>相册轮播</h3>
+			<div class="LXconmore">	  		  	
+  		  	  <div class="bgb prev"></div>
+  		  	  <div class="conff fl">
+  		  	    <ul id="roll">
+  		  		  <li>
+  		  			<a href="newsDetails.html">
+  		  				<img src="images/indexContent3.png" alt="" />
+  		  				<p>2.15爱心月募捐：为员工扶</p>
+  		  			</a>
+  		  		  </li>
+  		  		  <li>
+  		  			<a href="javascript:;">
+  		  				<img src="images/indexContent4.png" alt="" />
+  		  				<p>2.16爱心月募捐：为</p>
+  		  			</a>
+  		  		  </li>
+  		  		  <li>
+  		  			<a href="javascript:;">
+  		  				<img src="images/indexContent5.png" alt="" />
+  		  				<p>2.17爱心月募捐：为员</p>
+  		  			</a>
+  		  		  </li>
+  		  		  <li>
+  		  			<a href="javascript:;">
+  		  				<img src="images/indexContent4.png" alt="" />
+  		  				<p>2.18吓唬你</p>
+  		  			</a>
+  		  		  </li>	  		  		
+  		  		  <li>
+  		  			<a href="javascript:;">
+  		  				<img src="images/indexContent3.png" alt="" />
+  		  				<p>2.19爱心月募捐：为</p>
+  		  			</a>
+  		  		  </li>
+  		  		  <li>
+  		  			<a href="javascript:;">
+  		  				<img src="images/indexContent5.png" alt="" />
+  		  				<p>2.10爱心月募捐：为员</p>
+  		  			</a>
+  		  		  </li>	  		  		
+	  		  		  <li>
+  		  			<a href="javascript:;">
+  		  				<img src="images/indexContent5.png" alt="" />
+  		  				<p>2.11爱心月募捐：为员工</p>
+  		  			</a>
+  		  		  </li>	  		  		
+  		  	  </ul>	  		  	  
+  		  	  </div>
+  		  	  <div class="bgb next"></div>	  		   
+  		  </div>
+  		  <script src="js/super_slider.js"></script>
+  		  <script>
+			$(".LXconmore").superSlider({
+				prevBtn: 	 ".prev",//左按钮
+				nextBtn: 	 ".next",//右按钮
+				listCont:    "#roll",//滚动列表外层
+				scrollWhere: "next",//自动滚动方向next
+				delayTime: 	 3000,//自动轮播时间间隔
+				speed: 		 300,//滚动速度
+				amount: 	 1,//单次滚动数量
+				showNum: 	 5,//显示数量
+				autoPlay: 	 true//自动播放
+			});
+  		  </script>
+   <!-- --------------------换图片技巧 ----------------- -->
+   <style>
+	.barBox{ width: 100%; height: 122px; background: #fff; overflow: hidden; background:skyblue; margin-top: 20px;}
+	.barBox ul{margin-top: 30px; animation:mymove 1.2s 1; position: relative; left: 0; top: 0; background: #fff;}
+	@keyframes mymove{
+	    from{left:20%;opacity:0;}
+	    to{left:0%;opacity: 1;}
+	}
+	.barBox li{width: 16%; text-align: center; display: inline-block; cursor: pointer;}
+	.barBox li img{ width:46px; height:46px; margin: 0 auto;}
+	.barBox li span{margin-top: 15px; display: inline-block;}
+	.barBox li:hover span{color:#e30b20;}
+  		
+   </style>
+   <h3>换图片截取字符串等</h3>
+    <div class="barBox">
+		<ul>
+			<li class="current">
+				<a>
+					<img src="images/bar01h.jpg" alt=""></img>
+					<span>图片</span>
+				</a>
+			</li>
+			<li>
+				<a>
+					<img src="images/bar02.jpg" alt=""></img>
+					<span>命名</span>
+				</a>
+			</li>
+			<li>
+				<a href="societyPersonage.html">
+					<img src="images/bar04.jpg" alt=""></img>
+					<span>要有</span>
+				</a>
+			</li>
+			<li>
+				<a>
+					<img src="images/bar05.jpg" alt=""></img>
+					<span>规律</span>
+				</a>
+			</li>
+			<li>
+				<a>
+					<img src="images/bar06.jpg" alt=""></img>
+					<span>阿星满分</span>
+				</a>
+			</li>
+		</ul>
+    </div>
+    <script>
+      // lastIndexOf检索的字符串值的位置  没有出现则返回-1对大小写敏感
+	 // .slice(a,b); 提取字符串中的一部分,并返回这个新的字符串 
+	// 参数a:必选,表示开始提取位置的索引值
+   // 参数b:可选,表示从索引号a开始到索引号b的前一个字符,如果没有就获取当前索引号后面的全部元素;
+	function getFilePath(str){
+		 var index = str.lastIndexOf(".");
+		  return str.slice(0,index);
+	}
+
+	$(function(){
+		var img12;
+	  $('.barBox li').hover(function(e) {
+	    var imgPath = $(this).find('img').attr('src')
+	    img12 = getFilePath(imgPath);
+	    $(this).find('img').attr("src",img12+"h.jpg");
+	  },function(){
+	    $(this).find('img').attr("src",img12+".jpg");
+	  });
+
+	  $('.barBox .current').hover(function(){
+	  	$(this).find('img').attr('src',img12+'.jpg')
+	  },function(){
+	  	$(this).find('img').attr('src',img12+'.jpg')
+	  });	  	  	
+	});   	
+    </script>
+
+     <h3>但是我们换图片一搬能用css解决就用css解决</h3>
+     <style>
+     	.stDZ01{ width: 100%; height: 300px; }
+		.stDZ01 .ul{ width: 1170px; margin: 0 auto;}
+		.stDZ01 li{ float: left;}
+		.stDZ01 li .liBox{ width:233px; height: 236px;}
+		.stDZ01 li .img{ width: 94px; height: 120px; margin: 0 auto; margin-top: 40px; background: url(images/lxjlt.png) no-repeat; }
+		.stDZ01 li.li01 .img{ background-position:0 0;}
+		.stDZ01 li.li02 .img{ background-position:0 -120px;}
+		.stDZ01 li.li03 .img{ background-position:0 -240px;}
+		.stDZ01 li.li04 .img{ background-position:0 -360px;}
+		.stDZ01 li.li05 .img{ background-position:0 -480px;}
+		.stDZ01 li.li01:hover .img{ background-position:-94px 0;}
+		.stDZ01 li.li02:hover .img{ background-position:-94px -120px;}
+		.stDZ01 li.li03:hover .img{ background-position:-94px -240px;}
+		.stDZ01 li.li04:hover .img{ background-position:-94px -360px;}
+		.stDZ01 li.li05:hover .img{ background-position:-94px -480px;} 
+		.stDZ01 li p{margin-top: 18px; font-size: 18px; color: #333; text-align: center;}
+
+		.stDZ01 li:hover p{color:#67bb3a;}
+		.stDZ01 li:hover .liBox{ border: 1px solid #f1f1f1; box-shadow: 0 0 20px #f1f1f1;  box-sizing: border-box;}		   	
+     </style>
+     <div class="stDZ01">
+	     <ul class="ul">
+			<li class="li01">
+				<div class="liBox">
+					<div class="img"></div>
+					<p>产品研发</p>
+				</div>
+			</li>
+		    <li class="li02">
+				<div class="liBox">
+					<div class="img"></div>
+					<p>平台搭建</p>
+				</div>
+			</li>
+			<li class="li03">
+				<div class="liBox">
+					<div class="img"></div>
+					<p>运营建议</p>
+				</div>
+			</li>
+			<li class="li04">
+				<div class="liBox">
+					<div class="img"></div>
+					<p>大数据分析</p>
+				</div>
+			</li>
+			<li class="li05">
+				<div class="liBox">
+					<div class="img"></div>
+					<p>售后服务</p>
+				</div>
+			</li>
+		</ul>
+	</div>
+    <!-------------------- 投影-图片特效-旋转 -------------------->
+    <style>
+    	.specialEffects{ overflow: hidden;}
+        .specialEffects div{float: left;}
+        /* 投影 */
+    	.boxshadow{ width: 200px; height: 200px; margin:20px; border: 1px solid #f1f1f1; box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1); }
+    	/* 图片特效 */
+    	.innerImg{
+    		width: 200px; height: 200px; background: #999; margin:20px; position: relative; overflow: hidden
+    	}
+    	.innerImg:before{ 
+    		width: 50px;
+		    height: 350px;
+		    top: -100px;
+		    left: -150px;
+            content: "";
+            position: absolute;
+            overflow: hidden;
+            background: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
+            background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(50%, rgba(255, 255, 255, 0.2)), color-stop(100%, rgba(255, 255, 255, 0)));
+            background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
+            background: -o-linear-gradient(left, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
+            -webkit-transform: skewX(-25deg);
+            -moz-transform: skewX(-25deg);
+        }
+		.innerImg:hover::before{
+		             -webkit-transition: left .8s;
+		            -moz-transition: left .8s;
+		            transition: left .8s;
+		            left:300px;		          
+		}
+		/* 旋转 */
+		.LXtrans{
+			width: 200px; height: 200px; background:pink; margin: 20px; border-radius: 50%;
+		}
+		.LXtrans:hover{transform: rotateY(360deg); transition: all 1s;}
+
+		/* 图片放大 */
+		.LxImgBig{width: 200px; height: 180px; margin: 20px; overflow: hidden;}
+		.LxImgBig img{width: 100%; height: 100%; display: block;
+			transition:all 1s; 
+			-webkit-transition:all 1s;
+			-moz-transition:all 1s;
+			-ms-transition:all 1s;
+			-o-transition:all 1s;
+		}
+		.LxImgBig:hover img{
+			transform: scale(1.5); 
+			-webkit-transform: scale(1.5); 
+			-moz-transform: scale(1.5); 
+			-ms-transform: scale(1.5); 
+			-o-transform: scale(1.5); 
+		}
+		/* 背景颜色一半一半 */
+		.blackPink{width: 200px; height: 200px;margin: 20px; background: linear-gradient(to right,black 50%, pink 50%);}
+
+
+    </style>
+    <h3>投影-图片特效-旋转</h3>
+    <div class="specialEffects">
+	    <div class="boxshadow">投影</div>
+	    <div class="innerImg">图片特效</div>
+	    <div class="LXtrans">旋转</div>
+	    <div class="LxImgBig">
+	    	<img src="images/bg04.jpg" alt="">
+	    </div>
+	    <div class="blackPink"></div>
+    </div>
+
+
+	<!-------------- JQ实现图片跟随鼠标移动 ------------>
+    <style>
+    	#Main2{ width: 1000px; height: 500px; margin:20px auto; background:#c1c1c1 url('images/movebg.png') no-repeat center center; background-size: 60%; position: relative; overflow: hidden;}
+    	#Img2{ position:absolute; top:0px; left:0px;}
+    </style>
+    <h3>JQ图片跟随鼠标移动</h3>
+	<div id="Main2">
+		<img src="images/MUp.gif" id="Img2"/>
+	</div>
+
+    <script>
+    	$(function(){
+    	// 鼠标移上	
+			$('#Main2').mousemove(function(e) {
+				var x = e.offsetX+20+'px';
+				var y = e.offsetY+20+'px';
+		        $('#Img2').css({'left':x,'top':y})	   
+		    });
+		// 鼠标按下
+		    $('#Main2').mousedown(function(e){
+		    	$('#Img2').attr('src','images/MDown.gif')
+		    })
+		// 鼠标松开
+		     $('#Main2').mouseup(function(e){
+		    	$('#Img2').attr('src','images/MUp.gif')
+		    })
+	    });
+    </script>
+    <!--------------------------- 模态窗-------------------- -->
+    <style>
+    	.LXmodal{ background: rgba(0, 0, 0,0.3); width: 100%; height: 100%; position: fixed; top:100%; left: 0; z-index: 1000; opacity: 0; transition: all .6s;}
+        .LXmodal .modalIn{ width:40%; height:300px; background: #FFF; margin:0 auto; margin-top: 200px; text-align: center;}
+        .modalIn p{ font-size: 20px; line-height: 150px;} 
+    </style>
+    <h3>模态窗</h3>
+    <button class="LXbntmodal LXbut">我是是变聪明按钮</button>
+	<div class="LXmodal">
+		<div class="modalIn">
+	    	<p>控制节点<br>对不起！小星星永远是最聪明的！</p>
+	    </div>
+	</div>
+	<script>
+		$('.LXbntmodal').click(function(){
+    	    $('.LXmodal').css({'opacity':'1','top':'0'})
+    	});
+    	$('.LXmodal').click(function(e){
+		    var e=e || event.window
+		    var node1=e.target.className
+		    if(node1.indexOf('LXmodal')!=-1){
+		      $(this).css({'opacity':'0','top':'100%'})
+		    }
+	    });
+
+	</script>
+    <!-------------------- 固定侧边栏 ------------------ -->
+ <style>
+	.contact-share ul li img {display: block; margin:0 auto;border: 0;vertical-align: middle;}
+	.contact-share {position: fixed; top: 275px; right: 0;z-index: 9999;}
+	.contact-share ul li{margin-top: 1px;height: 50px;width: 50px;}
+	.contact-share  ul li .item-wrap { display: block;width: 150px; height: 50px; position: relative;}
+	.contact-share ul li .item-wrap .icon {display: inline-block; height: 50px; width: 50px; background-color: #848484;text-align: center;vertical-align: middle;
+	    position: absolute;top: 0; left: 0;z-index: 10;cursor: pointer; opacity: 0.5; filter: alpha(opacity=50);}
+	.contact-share ul li .item-wrap .text {display: inline-block;padding-left: 20px;height: 50px;line-height: 50px; background-color: #ff7852;
+	    color: #ffffff; vertical-align: middle; position: absolute;top: 0; left: 0;z-index: 9; opacity: 0; filter: alpha(opacity=0);cursor: pointer;}
+	.contact-share ul li.top span { height: 50px; background: url(images/to-top-icon.png) no-repeat center #848484; display: inline-block;width: 50px;float: right; cursor: pointer;}   
+	.contact-share ul li.top span:hover { opacity: 0.8;  filter: alpha(opacity=80);}
+	.contact-share ul li.current .item-wrap .text {  opacity: 1;  filter: alpha(opacity=100);background-color: #67bb3a;}
+	.contact-share ul li.current .item-wrap .icon { background-color: #67bb3a; opacity: 1;  filter: alpha(opacity=100);}
+	.share-icons {float: right; color: #3f3f3f; min-width: 350px; margin-top:8px;}
+	.share-icons .jiathis_txt {color: #fff;font-size: 14px !important;}
+	#jiathis_weixin_h3{background: #fff; color: #666; font-size: 12px; text-align: left; height: 30px;}
+	#jiathis_webchat img{margin: 0 auto;}
+ </style>
+<div class="contact-share" >
+	<ul>
+		<li class="item clearfix">
+            <span class="item-wrap">
+            	<span class="icon">
+            		<img src="http://www.mdkg.net/web/images/tel-icon1.png" alt="联系电话">
+            	</span>
+            	<span class="text"> 4008652752</span>
+            </span>
+		</li>
+		<li class="item clearfix">
+			<a rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2506286633&amp;site=qq&amp;menu=yes" target="_blank" class="item-wrap">
+				<span class="icon">
+					<img src="http://www.mdkg.net/web/images/qq-icon.png" alt="QQ">
+				</span>
+				<span class="text">在线客服</span>
+			</a>
+		</li>
+		<li class="item clearfix">
+			<span class="item-wrap">
+				<span class="icon">
+					<img src="http://www.mdkg.net/web/images/share-icon.png" alt="分享">
+				</span>			
+				<span class="text">
+					<div class="share-icons">
+						<div class="jiathis_style_32x32">
+							<span class="jiathis_txt">分享到：</span>
+							<a class="jiathis_button_qzone"></a>
+							<a class="jiathis_button_tsina"></a>
+							<a class="jiathis_button_tqq"></a>
+							<a class="jiathis_button_weixin"></a>
+							<a class="jiathis_button_douban"></a>
+							<a class="jiathis_button_renren"></a>
+							<a href="http://www.jiathis.com/share?uid=2065113" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+						</div>
+						<script type="text/javascript" >
+						var jiathis_config={
+							data_track_clickback:true,
+							sm:"qzone,tsina,tqq,weixin,renren,douban",
+							summary:"",
+							shortUrl:false,
+							hideMore:false
+						}
+						</script>
+						<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2065113" charset="utf-8"></script>
+						<!-- JiaThis Button END -->
+	                 </div>
+	            <span>
+		</li>
+		<li class="top clearfix">
+			<span></span>
+		</li>
+	</ul>
+</div>
+
+</div>
+<script>
+$(function(){
+		var Text=$('.contact-share').find('.text'),
+		    Icon=$('.contact-share').find('.icon'),
+		    shItem=$('.contact-share').find('.item-wrap'),
+		    shLi=$('.contact-share').find('.item'),
+		    up=$('.contact-share').find('.top');
+	shItem.hover(function(){
+		var Parent=$(this).parent();Parent.addClass('current');
+		var thisText=$(this).find('.text');
+		var TextW=thisText.innerWidth();
+		thisText.stop().animate({'left':-TextW},300,function(){});
+	},function(){
+		var Parent=$(this).parent();
+		var thisText=$(this).find('.text');
+		thisText.stop().animate({'left':0},300,function(){Parent.removeClass('current');});
+	});
+	up.click(function(){
+		$("html, body").animate({scrollTop:'0px'},300);});
+		$(window).scroll(function(){if($(window).scrollTop()>275){
+			$('.contact-share').fadeIn(300);
+		}else{
+			$('.contact-share').fadeOut(300);
+		}
+	});
+});
+</script>
+<h3>滚滚屏以及c3动画transform和animation详情</h3>
+<a href="ggp.html" target="_blank" class="LXbut">点击查看效果</a>
+
+
+
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
