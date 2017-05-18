@@ -89,7 +89,7 @@
 		        autoPlay: true
 		         });			
 		</script>
-
+        <!--  -->
 		<style>
 			.LXconmore{ width:100%; height:150px; background: #fff; margin-top: 22px;}
 			.LXconmore .bgb{ width: 12px; height: 27px; float: left; background:url(images/jiantou.png) no-repeat; cursor: pointer;}
@@ -100,7 +100,7 @@
 			.LXconmore ul li img{width: 186px; height: 96px;}
 			.LXconmore ul li p{ margin-top:17px; text-align: center; color: #666; font-size: 14px; width:13em;word-break:keep-all;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 		</style>
-		<script type="text/javascript" src="../../jquery.SuperSlide.2.1.1.js"></script>
+		
 		<style>
 			.txtMarquee-top{width:300px; margin:20px;}
 			.txtMarquee-top .hd {
@@ -124,7 +124,7 @@
 			    background-position: 0 -140px;
 			}
 		</style>
-		<h3>新闻轮播</h3>
+		<h3>新闻轮播引入SuperSlide</h3>
 		<div class="txtMarquee-top" style="margin-top: 50px;">
 			<div class="hd">
 				<a class="next"></a>
@@ -193,7 +193,7 @@
 		<script>
 			jQuery(".txtMarquee-top").slide({mainCell:".bd ul",autoPlay:true,effect:"topMarquee",vis:5,interTime:50,trigger:"click"});
 		</script>
- 
+        <!--   -->
  		<style>
 			.slideBox{ width:450px; height:230px; overflow:hidden; position:relative; border:1px solid #ddd; margin: 0 auto;}
 			.slideBox .hd{ height:15px; overflow:hidden; position:absolute; right:5px; bottom:5px; z-index:1; }
@@ -213,7 +213,7 @@
 			.slideBox .prevStop{ display:none;  }
 			.slideBox .nextStop{ display:none;  }	
  		</style>
-		<h3>pc banner轮播</h3>
+		<h3>pc banner轮播也是引入SuperSlide</h3>
 		<div id="slideBox" class="slideBox">
 			<div class="hd">
 				<ul>
@@ -676,6 +676,409 @@ $(function(){
 <h3>滚滚屏以及c3动画transform和animation详情</h3>
 <a href="ggp.html" target="_blank" class="LXbut">点击查看效果</a>
 
+<!-- 评论框 -->
+<style>
+  .discussContent{ width:100%; max-width:640px; margin: 0 auto; margin-top: 10px; height:29vh; background:#FFFFFF; overflow-y:scroll;border:1px solid #EEEEEE;word-wrap:break-word; }
+  .you_speak{ position: relative; width:100%;max-width:640px; margin: 0 auto; height:7vh;  border-left: 1px solid #eee; border-bottom: 1px solid #eee;  background: #eee;}
+  .you_speak .left{width:15%; height:7vh; float: left;  background:url("images/face.png") no-repeat center center;}
+  .you_speak .dialogBox{ width: 80%; height:5vh; float: left; margin-top: 1.5vh;}
+  .you_speak .dialogBox .text{ width:76%; height: 4vh; padding-left: 5%; border: 1px solid #eee; float: left; box-sizing: border-box; outline: none;}
+  .you_speak .dialogBox .bnt{ outline: none; width:20%; height: 4vh; color:gold; background: #fff; float: right; border: 1px solid gold;}
+</style>
+	<h3>评论框</h3>
+	<div class="discussContent">
+        <ol id="messageol">
+        
+        </ol>
+	</div>
+	<div class="you_speak">
+        <div class="left emotion"></div>
+        <div class="dialogBox">
+          <input type="text" placeholder="您要说些什么…" class="text input" id="saytext" name="saytext">
+          <input type="button" value="发送" class="bnt sub_btn">
+        </div>
+	</div>
+
+<script src="js/jquery.qqFace.js"></script>
+<script src="js/browser.js"></script>
+<script>
+  $('.emotion').qqFace({
+    id : 'facebox', 
+    assign:'saytext', 
+    path:'arclist/' //表情存放的路径
+  })
+
+  //增加节点显示评论
+  $(".sub_btn").click(function(){
+    var str = $("#saytext").val();
+    $("#messageol").append('<li>'+replace_em(str)+'</li>');
+    $("#saytext").val("");
+  });
+
+	//查看结果
+	function replace_em(str){
+	  str = str.replace(/\</g,'&lt;');
+	  str = str.replace(/\>/g,'&gt;');
+	  str = str.replace(/\n/g,'<br/>');
+	  str = str.replace(/\[em_([0-9]*)\]/g,'<img src="arclist/$1.gif" border="0" />');
+	  return str;
+	};
+</script>
+
+<!-- 登陆 -->
+<style>
+.login_box {
+    width: 292px;height: 258px;
+    background-color:rgba(0,0,0,0.0);
+    border: 1px solid #EEEEEE;/*边框颜色为灰色*/
+    border-radius: 2px;/*边框px边角有5px的弧度*/
+    box-shadow:0 1px 9px 0 rgba(0,0,0,0.05);
+    margin: 0 auto;
+    text-align: center;
+}
+.sBut{
+    width: 292px;height: 36px;
+    background-color: #FCB314;
+    color: white;
+    font-size: 14px;
+    border: 0px;/*无边框*/
+    padding: 0px;/*无内边距*/
+
+}
+.Accout_lab {
+    width: 228px;height: 36px;
+    text-align: left;
+    background-color: rgba(0,0,0,0.0);
+    color: #999999;
+    font-size: 12px;
+    border: 1px solid #EDEDED;/*输入框的边框*/
+    padding: 0px 0px 0px 10px;/*左边内边距为10px，显得美观*/
+    margin-top: 10px;
+}
+.Pwd_lab {
+    width: 228px;height: 36px;
+    text-align: left;
+    background-color: rgba(0,0,0,0.0);
+    color: #999999;
+    font-size: 12px;
+    border: 1px solid #EDEDED;/*输入框的边框*/
+    padding: 0px 0px 0px 10px;/*左边内边距为10px，显得美观*/
+    margin-top: 10px;
+}
+
+.log_but {
+    width: 238px;height: 36px;
+    background-color: #FCB314;
+    color: white;
+    font-size: 14px;
+    border: 0;/*输入框的边框*/
+    border-radius: 2px;/*边框px边角有5px的弧度*/
+    margin-top: 10px;
+}
+
+.log_but:hover {
+    background-color: #DB9B12;
+}
+.tipLabel {
+    width: 228px;
+    height: 14px;
+    text-align: left;
+    background-color: rgba(0,0,0,0.0);
+    color: #FE7777;
+    font-size: 10px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+</style>
+<h3>登陆ajax提交</h3>
+<div class = "login_box">
+	 <button class="sBut" type="button" id="sButton">登录</button>
+	 <div class="tipLabel" id="Tlabel"></div>
+	 <input class = "Accout_lab" id="A_Lab" placeholder="您的账号/手机号">
+	 <input class = "Pwd_lab" id="P_Lab" placeholder="请输入账号密码" type="password">
+	 <button  type="button" class="log_but" id="LBut"  >登录</button>
+</div>
+<script>
+	//支持Enter键登录
+	document.onkeydown = function (e) {
+	    if($(".bac").length ==0){
+	        if(!e) e=window.event;
+	        if((e.keyCode || e.which) == 13){
+	            var obtnLogin = document.getElementById("LBut");
+	            obtnLogin.focus();
+	        }
+
+	    }
+	};
+
+	$("#LBut").click(function(){
+		var ladhhd = document.getElementById("Tlabel");
+		var reg = /(^0{0,1}1[3|4|5|6|7|8|9][0-9]{9}$)/; 
+		var phone=$("#A_Lab").val()
+		var password=$("#P_Lab").val()
+		if(phone==""){
+            ladhhd.innerText = "账号不能为空!";
+            $('#A_Lab').focus();
+		}else if(!reg.test(phone)){
+			ladhhd.innerText = "您输入的手机号码无效!";
+			$('#A_Lab').focus();
+		}else if(password==""){
+			ladhhd.innerText = "密码不能为空!";
+			$('#A_Lab').focus();
+		}else{
+			ladhhd.innerText = "";
+			gotoSubmitThePostInfor();
+		}
+	});
+
+//登录请求
+	function gotoSubmitThePostInfor(){
+	    $.ajax({
+	        cache : true,  
+	        type : "POST",
+	        url : "newLife.html",  
+	        contentType:"application/json; charset=utf-8",
+	        dataType : "json", 
+	        data:{"usertype":1,"account":$('#A_Lab').val(),"password":$('#P_Lab').val()},        
+	        error : function(request) {
+	            alert("登录失败:" + request);
+	        },
+	        success : function(r){
+	            console.log(r)
+	            window.location.href = "ClassList.html";
+	        }
+	    });
+	}
+	//cache要求为Boolean类型的参数，默认为true设置为false将不会从浏览器缓存中加载请求信息。
+	//url要求为String类型的参数,（默认为当前页地址）发送请求的地址。
+	//dataType要求为String类型的参数，预期服务器返回的数据类型。
+	//data要求为Object或String类型的参数，发送到服务器的数据。
+</script>
+<!-- from表单提交 -->
+<h3>from表单提交</h3>
+<style>
+	#myform{width:400px; height: auto; overflow: hidden; margin: 0 auto; line-height: 24px; border: 1px solid #f1f1f1; padding: 15px;}
+	#myform tr{margin-top:15px; display: block;}
+	#myform table tr:nth-of-type(2) input{width: 15px;}
+	#myform table tr:nth-of-type(4) input{width: 15px;}
+	#myform tr td:nth-of-type(1){width:90px; color:#000;}
+	#myform tr td:nth-of-type(2){width:180px;}
+	#myform input{width: 180px; height: 24px;padding-left: 10px; border: 1px solid #ccc;}
+	#myform #submit{width: 400px; margin-top: 10px; display: block;}
+	#myform .authCode{width:70px; height:24px; line-height:24px; border: 1px solid #ccc; color: #ccc; text-align: center; display: inline-block; margin-left: 10px; cursor: pointer;}
+	#myform .hint{text-align: center;}
+	#myform .eye{ width:30px; height:20px; background: url('images/eye.jpg') no-repeat; background-size: 100%; display: inline-block; margin-left: 10px; margin-top: 3px; cursor: pointer;}
+</style>
+<form id="myform" name="myform" method="post" enctype="multipart/form-data" action="http://www.baidu.com" onsubmit="return sumbitTest();">  
+    <table>  
+        <tr>  
+            <td>姓名:</td>  
+            <td> <input type="text" name="name" class="name" /> </td>  
+        </tr>  
+        <tr>  
+            <td>性别:</td>  
+            <td>  
+                <input type="radio" name="sex" value="1" class="sexMan"> 男  
+                <input type="radio" name="sex" value="0" class="sexWoman"> 女  
+            </td>  
+        </tr>  
+        <tr>  
+            <td>年龄:</td>  
+            <td>  
+                <select name="age">  
+                    <option value="20">20</option>  
+                    <option value="21">21</option>  
+                    <option value="22">22</option>  
+                </select>  
+            </td>  
+        </tr>
+        <tr>
+        	<td>我已阅读规则：</td>
+        	<td>
+        		<input type="checkbox" class="consent">
+        	</td>
+        </tr> 
+        <tr>
+        	<td>手机:</td>
+        	<td>
+        		<input type="text" name="phone" placeholder="请输入手机号" class="phone">
+        	</td>
+        </tr> 
+        <tr>
+        	<td>验证码:</td>
+        	<td>
+        		<input type="text" name="authCode" placeholder="请输入验证码" class="authCodeVal">
+        	</td>
+        	<td>
+        		<span class="authCode">获取验证码</span>
+        	</td>        	
+        </tr>
+        <tr>
+        	<td>密码</td>
+        	<td>
+        		<input type="password" name="password" class="password">
+        	</td>
+        	<td>
+        		<span class="eye"></span>
+        	</td>
+        </tr>
+        <tr>
+        	<td>邮箱:</td>
+        	<td>
+        		<input type="text" name="mailbox" placeholder="请输入邮箱" class="mailbox">
+        	</td>
+        </tr>
+        <tr class="uploadingImg" style="overflow: hidden;">
+        	<td style="display: inline-block;">上传名片：</td>
+        	<td style="width:100px; height:80px; background-color: #eef1ee; text-align: center; color: #a6aeaa; display: inline-block; line-height: 80px;">
+        		<img src="" alt="+" style="width: 100%; height: 100%;">
+        		<input type="file" name="img01" accept="image/gif,image/jpeg,image/png" class="img1" style="display: none;">
+        		正面
+        	</td>
+        	<td style="width:100px; height:80px; background-color: #eef1ee; text-align: center; color: #a6aeaa; margin-left: 10px; display: inline-block;  line-height: 80px;"">
+        		<img src="" alt="+" style="width: 100%; height: 100%;">
+				<input type="file" class="img2" name="" accept="image/gif,image/jpeg,image/png" style="display: none;">
+				反面
+        	</td>
+        </tr>
+        <tr>  
+            <td colspan="2">  
+                <input type="submit" value="Submit正常提交" id="submit">  
+            </td>  
+        </tr>
+        <tr>
+        	<td id="hint" style="width:400px; color: #FCB314; text-align: center;" >wenzi</td>	
+        </tr>  
+    </table>  
+</form>
+<script>
+	var name,
+		sexMan,
+		sexWoman,
+		consent,
+		phone,
+		authCode,
+		password,
+		mailbox,
+		img1,
+		img2,
+		reg = /(^0{0,1}1[3|4|5|6|7|8|9][0-9]{9}$)/ ,
+		myReg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/,
+		ladhhd = document.getElementById("hint");
+
+//获取验证码
+$("#myform .authCode").click(function(){
+	var num=60;
+	var timer=null;
+ 	phone=$("#myform .phone").val();
+ 	if(phone==""){
+ 		ladhhd.innerText = "请输入手机号码";
+ 	}else if(!reg.test(phone)){
+ 		ladhhd.innerText = "您输入手机号码有误";
+ 	}else{
+ 		ladhhd.innerText = "验证码已发送";
+ 		//$.post(b,{'phone':phone},function(data){})
+ 		timer=setInterval(function(){
+ 			num--
+ 			$("#myform .authCode").text(num+"重新获取")
+ 			if(num<0){
+ 				$("#myform .authCode").text("获取验证码")
+ 				clearInterval(timer)
+ 			}
+ 		},1000);
+ 	};
+});
+
+//密码小眼睛
+$('#myform .eye').click(function(){
+	password=$("#myform .password");
+	if(password.attr("type") == "password") {
+		password.attr("type","text")
+	}
+	else{
+		password.attr("type","password")
+	}
+
+});
+
+//上传图片预览
+$("#myform .uploadingImg img").click(function(){
+	$(this).siblings('input').click()
+	$(this).siblings('input').change(function() {
+		var $file = $(this)
+		var fileObj = $file[0]
+		var windowURL = window.URL || window.webkitURL
+		var dataURL
+		var $img = $(this).siblings("img")
+
+		if(fileObj && fileObj.files && fileObj.files[0]){
+			dataURL = windowURL.createObjectURL(fileObj.files[0])
+			$img.attr("src",dataURL)
+		}else{
+			dataURL = $file.val()
+			var imgObj = document.getElementById("preview")
+			imgObj.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)"
+			imgObj.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = dataURL
+		}
+	})
+})
+
+
+$("#submit").click(function(){
+	name=$("#myform .name").val();
+	sexMan=$("#myform .sexMan").prop('checked');
+	sexWoman=$("#myform .sexWoman").prop('checked');
+	consent=$("#myform .consent").prop('checked');
+	phone=$("#myform .phone").val();
+	password=$("#myform .password").val();
+	authCode=$("#myform .authCodeVal").val();
+	mailbox=$("#myform .mailbox").val();
+	img1=$("#myform .img1").val();
+	img2=$("#myform .img2").val();
+	console.log($("#myform .img1").val())
+
+
+	if(name==""){
+		ladhhd.innerText = "请输入名字";
+		return false;
+	}else if(sexMan==false && sexWoman==false){
+		ladhhd.innerText = "请选择性别";
+		return false;
+	}else if(consent==false){
+		ladhhd.innerText = "请阅读规则";
+		return false;
+	}else if(phone==""){
+		ladhhd.innerText = "请输入手机号码";
+		return false;
+	}else if(!reg.test(phone)){
+ 		ladhhd.innerText = "您输入手机号码有误";
+ 		return false;
+ 	}else if(password==""){
+ 		ladhhd.innerText = "请输入密码";
+ 		return false;
+ 	}else if(authCode==""){
+ 		ladhhd.innerText = "请输入验证码";
+ 		return false;
+ 	}else if(mailbox==""){
+ 		ladhhd.innerText = "请输入邮箱";
+ 		return false;
+ 	}else if(!myReg.test(mailbox)){
+ 		ladhhd.innerText = "您输入邮箱有误";
+ 		return false;
+ 	}else if(img1==""){
+ 		ladhhd.innerText = "请上传身份证正面";
+ 		return false;
+ 	}else if(img2==""){
+ 		ladhhd.innerText = "请上传身份证反面";
+ 		return false;
+ 	}else{
+ 		return true
+ 	}
+})
+
+
+
+</script>
 
 
     </body>
