@@ -47,7 +47,7 @@
 			.banner .hd{ position:absolute; bottom:0.2rem; z-index:1; position:absolute; left:50%; transform:translateX(-50%);-webkit-transform:translateX(-50%); -moz-transform:translateX(-50%);-ms-transform:translateX(-50%);-o-transform:translateX(-50%);}
 			.banner .hd li{ display:inline-block; width:0.2rem; height:0.2rem; -webkit-border-radius:50%; -moz-border-radius:50%; -ms-border-radius:50%; border-radius:50%; background-color:#fff; text-indent:-99999px; overflow:hidden; margin:0 0.1rem; }
 			.banner .hd li.on{ background-color: #39b781;}	
-			.banner .bnt{ position:absolute; left: 3%; top: 50%; margin-top: -25px; display: block; width: 32px; height: 40px; background: #000;}	
+			.banner .bnt{position:absolute; left: 3%; top: 50%; margin-top: -25px; display: block; width: 32px; height: 40px; background: #000;}	
 			.banner .next{left: auto; right: 3%; background: #000;}	
         </style>
         <h3>移动端banner轮播</h3>
@@ -89,17 +89,7 @@
 		        autoPlay: true
 		         });			
 		</script>
-        <!--  -->
-		<style>
-			.LXconmore{ width:100%; height:150px; background: #fff; margin-top: 22px;}
-			.LXconmore .bgb{ width: 12px; height: 27px; float: left; background:url(images/jiantou.png) no-repeat; cursor: pointer;}
-			.LXconmore .prev{ margin:40px 15px 0 32px;}
-			.LXconmore .next{margin:40px 32px 0 15px; background-position: top right;}
-			.LXconmore ul{ width: auto; height: 132px;}
-			.LXconmore ul li{display: inline-block;margin: 0 15px;}
-			.LXconmore ul li img{width: 186px; height: 96px;}
-			.LXconmore ul li p{ margin-top:17px; text-align: center; color: #666; font-size: 14px; width:13em;word-break:keep-all;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-		</style>
+        <!-- 新闻轮播 -->
 		
 		<style>
 			.txtMarquee-top{width:300px; margin:20px;}
@@ -249,6 +239,18 @@
 		<script>
 			jQuery(".slideBox").slide({mainCell:".bd ul",effect:"leftLoop",autoPlay:true})
 		</script>
+		
+		<!-- 相册轮播 -->
+		<style>
+			.LXconmore{ width:100%; height:150px; background: #fff; margin-top: 22px;}
+			.LXconmore .bgb{ width: 12px; height: 27px; float: left; background:url(images/jiantou.png) no-repeat; cursor: pointer;}
+			.LXconmore .prev{ margin:40px 15px 0 32px;}
+			.LXconmore .next{margin:40px 32px 0 15px; background-position: top right;}
+			.LXconmore ul{ width: auto; height: 132px;}
+			.LXconmore ul li{display: inline-block;margin: 0 15px;}
+			.LXconmore ul li img{width: 186px; height: 96px;}
+			.LXconmore ul li p{ margin-top:17px; text-align: center; color: #666; font-size: 14px; width:13em;word-break:keep-all;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+		</style>		
    		<h3>相册轮播</h3>
 			<div class="LXconmore">	  		  	
   		  	  <div class="bgb prev"></div>
@@ -1021,7 +1023,7 @@ $("#myform .uploadingImg img").click(function(){
 			imgObj.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = dataURL
 		}
 	})
-})
+});
 
 
 $("#submit").click(function(){
@@ -1074,13 +1076,156 @@ $("#submit").click(function(){
  	}else{
  		return true
  	}
-})
-
-
-
+});
 </script>
 
+<!-- tab栏切换 -->
+<h3>给单选框改变背景色</h3>
+<style>
+.select{width:250px;height:30px; margin:0 auto;}
+.select label{
+	float:left; margin-right:10px;
+}
+.select i{
+	float:left; width:14px; height:14px; display:block; margin:2px 5px 0 0; background:url(images/radio.gif) no-repeat;
+}
+.select .on i{
+	background-position:0 -14px;
+}
+</style>
+<div class="select">
+	<label data-val="1"><i></i>选项1</label>
+	<label data-val="2"><i></i>选项2</label>
+	<label data-val="3"><i></i>选项3</label>
+	<label data-val="4"><i></i>选项4</label>
+	<input type="hidden" name="select" id="selectInput" />
+</div>
 
+<script>
+$(function(){
+	$('.select label').click(function(){
+		if(!$(this).hasClass('on')){
+			$(this).addClass('on').siblings().removeClass('on');
+			$('#selectInput').val($(this).attr('data-val'));
+		}
+	})
+})	
+</script>
+
+<!-- 移动端上拉加载下拉刷新 -->
+<h3>移动端上拉加载下拉刷新(需在服务器环境运行)</h3>
+<link rel="stylesheet" href="dist/dropload.css">
+	<style>	
+    .index_state{width:90%; padding:15px 5%; background: #FFF;}
+	.index_state li{border-bottom: 1px solid #D6CECF;}
+	.index_state li:nth-child(1){/* margin-top: 15px;*/}
+	.index_new{ width:100%; height:auto; /*padding-bottom:10px;*/ background: #FFF; overflow:hidden;/* margin-bottom:20px;*/ padding: .2rem;}
+	.index_new .left{ float:left; width:28%; height:60px; overflow:hidden;}
+	.index_new .left img{ width:100%; height: auto; border-radius: 3px;}
+	.index_new .right{ width:67%; margin-left: 30%; float: none;}
+	.index_new p{ font-size: 0.25rem; height: 36px; overflow: hidden;}
+  .index_new span{ font-size: 0.2rem; color:#A6AEAA; display:block; margin-top: 5px;}
+  .index_state a:hover{color: #000000;}		
+	</style>
+  <div class="content">
+    <ul class="index_state lists">
+        <li class="index_new item">
+            <div class="left">
+                <a href="news-details.html"><img src="images/indexContent3.png" alt="new"></a>
+            </div>
+            <div class="right">
+                <p><a href="news-details.html" class="black">目前广州全市注册义工(志愿者)人数 已突破130万,其中社区义工超...</a></p>
+                <span>2016-12-07</span>
+            </div>
+        </li>
+        <li class="index_new item">
+            <div class="left">
+                <a><img src="images/indexContent4.png" alt="new"></a>
+            </div>
+            <div class="right">
+                <p><a>目前广州全市注册义工(志愿者)人数 已突破130万,其中社区义工超...</a></p>
+                <span>2016-12-07</span>
+            </div>
+        </li>
+        <li class="index_new item">
+            <div class="left">
+                <a><img src="images/indexContent5.png" alt="new"></a>
+            </div>
+            <div class="right">
+                <p><a>目前广州全市注册义工(志愿者)人数 已突破130万,其中社区义工超...</a></p>
+                <span>2016-12-07</span>
+            </div>
+        </li>
+    </ul>
+  </div>
+<script src="dist/dropload.min.js"></script>
+<script>
+$(function(){
+    var counter = 0;
+    // 每页展示4个
+    var num = 4;
+    var pageStart = 0,
+        pageEnd = 0;
+
+    // dropload
+    $('.content').dropload({
+        scrollArea : window,
+        loadDownFn : function(me){
+            $.ajax({
+                type: 'GET',
+                url: 'json/more.json',
+                dataType: 'json',
+                success: function(data){
+                	if(!data.lists.length){
+                		me.lock();
+                		me.noData();
+                		me.resetload();
+                		return;
+                	}
+                    var result = '';
+                    counter++;
+                    pageEnd = num * counter;
+                    pageStart = pageEnd - num;
+
+                    for(var i = pageStart; i < pageEnd; i++){
+                        result +=   '<li class="index_new item opacity">'
+                                        +'<div class="left">'
+                                          +'<a href="'+data.lists[i].link+'">'
+                                            +'<img src="'+data.lists[i].pic+'" alt="">'
+                                          +'</a>'
+            							+'</div>'
+                                        +'<div class="right">'
+                                           +'<p>' 
+                                             +'<a href="'+data.lists[i].link+'">'+data.lists[i].title+'</a>'
+                                           +'</p>'
+                                           +'<span>'+data.lists[i].date+'</span>'
+            							+'</div>'                                        
+                                    +'</li>';
+                        if((i + 1) >= data.lists.length){
+                            // 锁定
+                            me.lock();
+                            // 无数据
+                            me.noData();
+                            break;
+                        }
+                    }
+                    // 为了测试，延迟1秒加载
+                    setTimeout(function(){
+                        $('.lists').append(result);
+                        // 每次数据加载完，必须重置
+                        me.resetload();
+                    },1000);
+                },
+                error: function(xhr, type){
+                    alert('Ajax error!');
+                    // 即使加载出错，也得重置
+                    me.resetload();
+                }
+            });
+        }
+    });
+});
+</script>
     </body>
 </html>
 
@@ -1098,3 +1243,9 @@ $("#submit").click(function(){
 
 
 <br>
+	
+
+
+
+
+
